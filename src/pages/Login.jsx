@@ -6,11 +6,12 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
 import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineEmail } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../features/auth/authSlice";
 import { toast } from "sonner";
 
 function Login() {
+    const { loading } = useSelector((state) => state.auth);
     const [showPwd, setShowPwd] = useState(false);
 
     const [form, setForm] = useState({
@@ -124,9 +125,10 @@ function Login() {
                             </div>
                             <div className='mt-4'>
                                 <ButtonComponent
-                                    btnText='Login'
+                                    btnText={loading ? 'Loading...' : 'Login'}
                                     className='loginBtn themeBtn fw-600'
                                     onClick={handleLogin}
+                                    disabled={loading}
                                 />
                             </div>
                             <div className='forgotPwd-lbl mt-3'>

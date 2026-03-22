@@ -198,6 +198,7 @@ const PetRegisterModal = (props) => {
                                 <MdEdit />
                             </div>
                         </div>
+                        
                         <input
                             type='file'
                             accept='image/*'

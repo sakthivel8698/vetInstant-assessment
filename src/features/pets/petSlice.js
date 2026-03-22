@@ -1,13 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import API from "../../services/api";
+import config from "../../config/config";
 
 export const createPet = createAsyncThunk(
   "pets/create",
   async (formData, { rejectWithValue }) => {
     try {
-      const res = await API.post("/clinic/user/135943/pet", formData, {
+      const res = await API.post(config.ENDPOINTS.CREATE_PET, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",  // ← explicit override
+          "Content-Type": "multipart/form-data",
         },
       });
       return res.data;
@@ -21,7 +22,7 @@ export const fetchUserDetails = createAsyncThunk(
   "pets/fetchUserDetails",
   async (userId, { rejectWithValue }) => {
     try {
-      const res = await API.get(`/clinic/doctor/${userId}`);
+      const res = await API.get(config.ENDPOINTS.FETCH_USER);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || "Failed to fetch user details");
@@ -34,7 +35,7 @@ export const fetchPets = createAsyncThunk(
   "pets/fetch",
   async (filters, { rejectWithValue }) => {
     try {
-      const res = await API.post(`/clinic/pets-list`, filters);
+      const res = await API.post(config.ENDPOINTS.FETCH_PETS, filters);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || "Failed to fetch pets details");
@@ -45,10 +46,8 @@ export const fetchPets = createAsyncThunk(
 export const updateStatus = createAsyncThunk(
   "pets/update",
   async ({ id, status }, { rejectWithValue }) => {
-    // await API.put(`/pet/${id}/update?status=${status}`);
-    // return { id, status };
     try {
-      const res = await API.put(`/pet/${id}/update?status=${status}`);
+      const res = await API.put(`${config.ENDPOINTS.UPDATE_STATUS}/${id}/update?status=${status}`);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || "Failed to update pets status");
@@ -64,7 +63,7 @@ const petSlice = createSlice({
     loading: false,
     userDetails: null,
     userLoading: false,
-    totalCount: 0, 
+    totalCount: 0,
     currentPage: 1,
   },
   extraReducers: (builder) => {
