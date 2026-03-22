@@ -1,0 +1,117 @@
+/* input form label start */
+.custom_formLabel {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* input form label end */
+
+/* page loader start */
+.pageLoader {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* page loader end */
+
+
+/* Date picker start */
+
+.customDatepicker :global(.react-datepicker__input-container) {
+  display: flex !important;
+  position: relative;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 10px 13px;
+}
+
+.customDatepicker :global(input) {
+  border: none;
+  outline: none;
+  color: #323232;
+  height: 100%;
+  /* min-width: 200px; */
+  padding: 0px !important;
+  font-size: 15px;
+  width: 100%;
+}
+
+.customDatepicker :global(input::placeholder) {
+  color: #323232;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+
+.customDatepicker :global(.react-datepicker__calendar-icon) {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  padding: 0;
+}
+
+.customDatepicker :global(.react-datepicker__day--keyboard-selected),
+.customDatepicker :global(.react-datepicker__month-text--keyboard-selected),
+.customDatepicker :global(.react-datepicker__quarter-text--keyboard-selected),
+.customDatepicker :global(.react-datepicker__year-text--keyboard-selected) {
+  background-color: var(--themeclr) !important;
+  color: var(--white) !important;
+}
+
+.customDatepicker :global(.react-datepicker__day:hover) {
+  background-color: var(--themeclr) !important;
+  color: var(--white) !important;
+}
+
+.customDatepicker :global(input)::placeholder {
+  font-size: 13px;
+}
+
+/* Date picker end */
+
+
+/* custom select start*/
+
+.customSelectWrapper :global(.customSelect__control) {
+  min-width: 180px;
+  min-height: 40px;
+  box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  border-radius: 3px !important;
+}
+
+.customSelectWrapper :global(.customSelect__control:hover) {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.customSelectWrapper :global(.customSelect__option) {
+  font-size: 13px !important;
+}
+
+.customSelectWrapper :global(.customSelect__option--is-selected),
+.customSelectWrapper :global(.customSelect__option--is-focused) {
+  background-color: var(--themeclr) !important;
+  color: var(--white) !important;
+}
+
+.customSelectWrapper :global(.customSelect__option:hover) {
+  background-color: var(--themeclr) !important;
+  color: var(--white) !important;
+}
+
+
+.customSelectWrapper :global(.customSelect__single-value) {
+  font-size: 14px !important;
+}
+
+
+.customSelectWrapper :global(.customSelect__indicator-separator) {
+  display: none !important;
+}
+
+/* custom select end*/

@@ -1,0 +1,358 @@
+.login {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  /* display: grid; */
+  /* grid-template-columns: 50% 50%; */
+}
+
+.loginBg {
+  background: url('./assets/images/loginOut_bg.svg') no-repeat;
+  min-height: 100vh;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.loginForm {
+  height: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login .logo {
+  width: 160px;
+  height: auto;
+}
+
+.loginContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login_card {
+  background-color: var(--white);
+  color: var(--txtClr1);
+  border-radius: 15px;
+  max-width: 550px;
+  min-width: 450px;
+  padding: 30px 0px 30px 0px;
+}
+
+.login_card .title {
+  font-size: 36px;
+  margin-bottom: 35px !important;
+  font-weight: 400;
+}
+
+.previewPwdInp {
+  position: relative;
+}
+
+.previewPwdInp .icon {
+  font-size: 18px;
+}
+
+.previewPwdInp .inpIcon {
+  position: absolute;
+  top: 42px;
+  right: 15px;
+  /* transform: translateY(-8%); */
+}
+
+
+.forgotPwd-lbl {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.forgotPwd-lbl .form-check-input {
+  position: relative;
+  top: -1px;
+}
+
+.loginFormCheck {
+  font-size: 14px;
+}
+
+.forgotPwd-lbl .linkNav {
+  font-size: 14px;
+  color: var(--themeclr);
+}
+
+.forgotPwd-lbl .linkNav:hover {
+  text-decoration: underline !important;
+  color: var(--themeclr) !important;
+}
+
+.loginForm .loginBtn {
+  padding: 11px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+
+.loginBannerBg {
+  background-color: var(--themeclr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.loginBanner {
+  height: 54%;
+  min-height: 300px;
+}
+
+.userNameField {
+  position: relative;
+}
+
+.userNameField .loginFormInp {
+  padding-left: 40px;
+}
+
+.userNameField .icon {
+  top: 42px;
+  left: 12px;
+  /* transform: translateY(-10%); */
+  position: absolute;
+  font-size: 20px;
+}
+
+
+/* dashboard */
+
+.dashboard {
+  padding: 20px;
+}
+
+.tableStyle thead th {
+  background-color: #e8e8e8;
+  padding: 15px;
+  text-wrap: nowrap;
+  min-width: 150px;
+}
+
+.tableStyle thead th:first-child {
+  border-radius: 5px 0px 0px 0px;
+}
+
+.tableStyle thead th:last-child {
+  border-radius: 0px 5px 0px 0px;
+}
+
+.tableStyle tbody td {
+  padding: 15px;
+  background-color: #fafafa;
+}
+
+.tableAction {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.actionSwitch .form-check-input {
+  height: 20px;
+  width: 37px;
+  box-shadow: none;
+}
+
+.actionSwitch .form-check-input:checked {
+  background-color: #76ef58;
+  border: none;
+}
+
+.tableAction .msgIcon {
+  color: #feb91a;
+  font-size: 25px;
+}
+
+.addBetBtn .btnIcon {
+  font-size: 12px;
+  position: relative;
+  margin-right: 5px;
+  top: -2px;
+}
+
+.tableFilter {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tableFilter .filterInp {
+  background-color: #fafafa !important;
+}
+
+.filterBtn {
+  background-color: transparent !important;
+  color: var(--black) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  display: flex;
+  gap: 5px;
+}
+
+.filterBtn:hover {
+  background-color: #fafafa !important;
+}
+
+.filterBtn .btnIcon svg {
+  font-size: 20px;
+}
+
+.resetBtn {
+  background-color: var(--red) !important;
+  color: var(--white);
+  border-color: var(--red) !important;
+}
+
+.resetBtn:hover {
+  opacity: 0.9;
+}
+
+.CustomOffcanva .offcanvas-title {
+  color: var(--themeclr);
+  font-weight: 600;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.steperIcon {
+  font-size: 23px;
+  color: var(--themeclr);
+}
+
+.step-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--themeclr);
+  white-space: nowrap;
+}
+
+.step-line {
+  flex: 1;
+  height: 1.5px;
+  background: var(--themeclr);
+  margin: 0 10px;
+}
+
+.userProfile {
+  border: 1px dashed #dcdcdc;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.ProfInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ProfInfo .icon {
+  font-size: 20px;
+  color: var(--themeclr);
+}
+
+.profilePicture .title {
+  font-size: 18px;
+}
+
+.ownershipType .title {
+  color: #c4c2c2;
+  font-size: 18px;
+}
+
+
+.ownershipType .title {
+  color: #c4c2c2;
+  font-size: 18px;
+}
+
+.petCount {
+  font-size: 14px;
+  color: #ada9a9;
+}
+
+.dashboard .table {
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+}
+
+.pageNavBtn {
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.pageNavBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pageInfo {
+  font-size: 13px;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.filterCheckItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.filterCheckbox {
+  width: 18px;
+  height: 18px;
+}
+
+.addFilterLink {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--themeclr) !important;
+}
+
+.text-danger {
+  font-size: 15px;
+}
+
+@media (max-width:767px) {
+  .login_card {
+    min-width: 300px;
+    padding: 10px 0px 20px 0px;
+  }
+
+  .login .logo {
+    width: 150px;
+  }
+
+  .login_card .title {
+    font-size: 30px;
+    margin-bottom: 20px !important;
+  }
+}
