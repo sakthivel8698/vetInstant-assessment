@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { FaCheckCircle } from "react-icons/fa";
@@ -13,8 +13,11 @@ import DatepickerComponent from '../components/global/DatepickerComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPet, fetchUserDetails } from '../features/pets/petSlice';
 import { toast } from "sonner";
+import { FaRegUser } from "react-icons/fa";
+import { MdEdit } from "react-icons/md";
 
 const PetRegisterModal = (props) => {
+    const dispatch = useDispatch();
     const { userDetails, userLoading } = useSelector((state) => state.pets);
     const { show, handleClose } = props;
     const [species, setSpecies] = useState(null)
@@ -26,6 +29,9 @@ const PetRegisterModal = (props) => {
     const [temperament, setTemparament] = useState(null)
     const [dob, setDob] = useState();
     const [errors, setErrors] = useState({});
+    const fileRef = useRef();
+    const [imagePreview, setImagePreview] = useState(null);
+
 
 
     const [form, setForm] = useState({
@@ -81,6 +87,15 @@ const PetRegisterModal = (props) => {
         // if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
     };
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setForm((prev) => ({ ...prev, petImage: file }));
+            setImagePreview(URL.createObjectURL(file));
+        }
+    };
+
+
     const validate = () => {
         const newErrors = {};
         if (!form.petName) newErrors.petName = 'Name is required';
@@ -113,24 +128,24 @@ const PetRegisterModal = (props) => {
             fd.append('dob', formatted);
         }
 
-
-        console.log('formdata', ...fd)
+        if (form.petImage) {
+            fd.append('petImage', form.petImage);
+        }
 
         const result = await dispatch(createPet(fd));
 
         if (createPet.fulfilled.match(result)) {
             toast.success('Pet registered successfully!');
             handleClose();
-            console.log('successfully created')
         } else {
-            toast.error(result.payload || 'Failed to register pet', { id });
+            toast.error(result.payload || 'Failed to register pet');
         }
 
 
 
     }
 
-  
+
 
     return (
         <Offcanvas show={show} onHide={handleClose} placement='end' className='CustomOffcanva'>
@@ -166,12 +181,30 @@ const PetRegisterModal = (props) => {
                     </div>
                     <div className='profilePicture mb-4'>
                         <h5 className='title'>Profile Picture</h5>
-                        {/* <input
+
+                        <div className='profileUploadWrap' onClick={() => fileRef.current.click()}>
+                            {imagePreview ? (
+                                <img
+                                    src={imagePreview}
+                                    alt='pet'
+                                    className='profilePreviewImg'
+                                />
+                            ) : (
+                                <div className='profilePlaceholder'>
+                                    <FaRegUser className='placeholderIcon' />
+                                </div>
+                            )}
+                            <div className='editBadge'>
+                                <MdEdit />
+                            </div>
+                        </div>
+                        <input
                             type='file'
                             accept='image/*'
+                            ref={fileRef}
+                            style={{ display: 'none' }}
                             onChange={handleImageChange}
-                            className='mt-2'
-                        /> */}
+                        />
                     </div>
                     <div className='ownershipType'>
                         <h5 className='title'>Ownership Type:</h5>
@@ -211,7 +244,7 @@ const PetRegisterModal = (props) => {
                                     <ReactSelectComponent
                                         options={speciesOptions}
                                         value={species}
-                                        placeholder='Species'
+                                        placeholder='Species*'
                                         onChange={(option) => {
                                             setSpecies(option);
                                             if (errors.species) setErrors((p) => ({ ...p, species: '' }));

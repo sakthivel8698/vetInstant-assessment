@@ -12,7 +12,7 @@ export const createPet = createAsyncThunk(
       });
       return res.data;
     } catch (err) {
-      return rejectWithValue(err.response?.data?.message || "Login failed");
+      return rejectWithValue(err.response?.data?.resourceName || "Register failed");
     }
   }
 );

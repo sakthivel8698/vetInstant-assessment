@@ -341,6 +341,62 @@
   font-size: 15px;
 }
 
+.customSelect__placeholder {
+  text-wrap: nowrap;
+  font-size: 13px;
+}
+
+
+.profileUploadWrap {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px auto;
+  overflow: visible;
+}
+
+.profilePlaceholder {
+  width: 130px;
+  height: 130px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholderIcon {
+  font-size: 48px;
+  color: #d1d5db;
+}
+
+.profilePreviewImg {
+  width: 130px;
+  height: 130px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.editBadge {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  background: #22c55e61;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.editBadge svg {
+  font-size: 13px;
+}
+
 @media (max-width:767px) {
   .login_card {
     min-width: 300px;

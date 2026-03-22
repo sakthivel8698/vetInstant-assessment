@@ -78,7 +78,6 @@
 /* custom select start*/
 
 .customSelectWrapper :global(.customSelect__control) {
-  min-width: 180px;
   min-height: 40px;
   box-shadow: none !important;
   border-color: rgba(0, 0, 0, 0.12) !important;

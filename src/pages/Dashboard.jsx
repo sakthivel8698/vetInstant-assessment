@@ -31,6 +31,7 @@ function Dashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemSize = 10;
   const totalPages = Math.ceil(totalCount / itemSize);
+  const [sideFilters, setSideFilters] = useState({});
 
   const userID = 135943;
 
@@ -40,7 +41,7 @@ function Dashboard() {
 
   useEffect(() => {
     fetchAllDatas();
-  }, [filters, currentPage])
+  }, [filters, currentPage, sideFilters])
 
   const fetchAllDatas = () => {
     const timer = setTimeout(() => {
@@ -52,6 +53,7 @@ function Dashboard() {
         ...(filters.petName && { petName: filters.petName }),
         ...(filters.username && { username: filters.username }),
         ...(filters.phoneNumber && { phoneNumber: filters.phoneNumber }),
+        ...sideFilters
       };
 
       dispatch(fetchPets(payload));
@@ -80,38 +82,14 @@ function Dashboard() {
 
   const handleReset = () => {
     setFilters({ patientId: '', petName: '', username: '', phoneNumber: '' });
-    fetchAllDatas();
+    setSideFilters({});
     setCurrentPage(1);
   };
-
-
-
-  console.log('listlist', list);
 
   const handleApplyFilters = (filterValues) => {
-
-    const payload = {
-      type: 'all',
-      page: 1,
-      itemSize: 10,
-      ...(filters.patientId && { patientId: filters.patientId }),
-      ...(filters.petName && { petName: filters.petName }),
-      ...(filters.username && { username: filters.username }),
-      ...(filters.phoneNumber && { phoneNumber: filters.phoneNumber }),
-
-      ...(filterValues.email && { email: filterValues.email }),
-      ...(filterValues.color && { color: filterValues.color }),
-      ...(filterValues.ownershipType && { ownershipType: filterValues.ownershipType[0] }),
-      ...(filterValues.species && { species: filterValues.species[0] }),
-      ...(filterValues.gender && { gender: filterValues?.gender[0] }),
-      ...(filterValues.reproductiveStatus && { reproductiveStatus: filterValues.reproductiveStatus[0] }),
-      ...(filterValues.bloodGroup && { bloodGroup: filterValues.bloodGroup[0] }),
-      ...(filterValues.temperament && { temperament: filterValues.temperament[0] }),
-    };
+    setSideFilters(filterValues);
     setCurrentPage(1);
-    dispatch(fetchPets(payload));
   };
-
 
   return (
     <div className='dashboard'>
